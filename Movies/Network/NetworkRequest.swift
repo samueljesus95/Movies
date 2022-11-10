@@ -8,17 +8,42 @@
 import Foundation
 
 enum HTTPMethod: String {
-    case GET = "get"
-    case POST = "post"
-    case PUT = "put"
-    case DELETE = "delete"
-    case PATCH = "patch"
+    case get = "GET"
+    case post = "POST"
+    case put = "PUT"
+    case patch = "PATCH"
+    case delete = "DELETE"
 }
 
-struct NetworkRequest {
-    let path: String
-    let method: HTTPMethod
-    let header: [String : String]
-    let queryParameter: [String : Any]?
-    let bodyParameter: [String : Any]?
+protocol NetworkRequest {
+    associatedtype Response
+    
+    var url: String { get }
+    var method: HTTPMethod { get }
+    var headers: [String : String] { get }
+    var queryParameters: [String : String]? { get }
+    var bodyParameter: [String : String]? { get }
+    
+    func decode(_ data: Data) throws -> Response
+}
+
+extension NetworkRequest where Response: Decodable {
+    func decode(_ data: Data) throws -> Response {
+        let decoder = JSONDecoder()
+        return try decoder.decode(Response.self, from: data)
+    }
+}
+
+extension NetworkRequest {
+    var headers: [String : String] {
+        [:]
+    }
+    
+    var queryParameters: [String : String] {
+        [:]
+    }
+    
+    var bodyParameter: [String : String] {
+        [:]
+    }
 }

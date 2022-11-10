@@ -11,7 +11,7 @@ enum MovieType {
     case latest
     case popular
     
-    var url: String {
+    var path: String {
         switch self {
         case .latest: return "/latest"
         case .popular: return "/popular"
