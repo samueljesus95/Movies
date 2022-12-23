@@ -7,18 +7,20 @@
 
 import Foundation
 
-enum ErrorResponse: String {
+enum ErrorResponse: Error {
     case apiError
     case invalidEndpoint
     case invalidResponse
     case noData
+    case serializationError
     
     public var description: String {
         switch self {
-        case .apiError: return "Erro na api"
-        case .invalidEndpoint: return "Erro com o endpoint"
-        case .invalidResponse: return "Error com a resposta"
-        case .noData: return "Sem dados para a requisição"
+        case .apiError: return "Failed to fetch data"
+        case .invalidEndpoint: return "Invalid endpoint"
+        case .invalidResponse: return "Invalid response"
+        case .noData: return "Na data"
+        case .serializationError: return "Failed to decode data"
         }
     }
 }

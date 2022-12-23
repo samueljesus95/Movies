@@ -8,13 +8,17 @@
 import Foundation
 
 enum MovieType {
-    case latest
     case popular
     
     var path: String {
         switch self {
-        case .latest: return "/latest"
         case .popular: return "/popular"
+        }
+    }
+
+    var description: String {
+        switch self {
+        case .popular: return "Popular"
         }
     }
 }

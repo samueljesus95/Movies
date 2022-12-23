@@ -15,35 +15,10 @@ enum HTTPMethod: String {
     case delete = "DELETE"
 }
 
-protocol NetworkRequest {
-    associatedtype Response
-    
-    var url: String { get }
-    var method: HTTPMethod { get }
-    var headers: [String : String] { get }
-    var queryParameters: [String : String]? { get }
-    var bodyParameter: [String : String]? { get }
-    
-    func decode(_ data: Data) throws -> Response
-}
-
-extension NetworkRequest where Response: Decodable {
-    func decode(_ data: Data) throws -> Response {
-        let decoder = JSONDecoder()
-        return try decoder.decode(Response.self, from: data)
-    }
-}
-
-extension NetworkRequest {
-    var headers: [String : String] {
-        [:]
-    }
-    
-    var queryParameters: [String : String] {
-        [:]
-    }
-    
-    var bodyParameter: [String : String] {
-        [:]
-    }
+struct NetworkRequest {
+    var path: String
+    var method: HTTPMethod
+    var headers: [String : String]
+    var queryParameters: [String : String]?
+    var bodyParameter: [String : String]?
 }
