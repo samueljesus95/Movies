@@ -11,6 +11,13 @@
 		6C2F8A1C28A288BE008E380B /* NetworkManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C2F8A1B28A288BE008E380B /* NetworkManagerProtocol.swift */; };
 		6C49F19628A562F200A3F56F /* MovieType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C49F19528A562F200A3F56F /* MovieType.swift */; };
 		6C63E9FC28AE6FF6005FA162 /* PopularViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C63E9FB28AE6FF6005FA162 /* PopularViewModel.swift */; };
+		6C7D5F9F2955D923009947EB /* PopularViewCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C7D5F9E2955D923009947EB /* PopularViewCode.swift */; };
+		6C7D5FA12955D997009947EB /* PopularService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C7D5FA02955D997009947EB /* PopularService.swift */; };
+		6C7D5FA32955F10B009947EB /* PopularViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C7D5FA22955F10B009947EB /* PopularViewModelTests.swift */; };
+		6C7D5FA62955F14B009947EB /* PopularServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C7D5FA52955F14B009947EB /* PopularServiceMock.swift */; };
+		6C7D5FA82955F4B6009947EB /* PopularMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C7D5FA72955F4B6009947EB /* PopularMock.swift */; };
+		6C7D5FAB295626D8009947EB /* PopularServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C7D5FAA295626D8009947EB /* PopularServiceTest.swift */; };
+		6C7D5FAE2956273E009947EB /* NetworkManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C7D5FAD2956273E009947EB /* NetworkManagerMock.swift */; };
 		6CD64DDE28A522D7008F89F0 /* Popular.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD64DDD28A522D7008F89F0 /* Popular.swift */; };
 		6CD7F35C291D4AF1008F92C0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD7F35B291D4AF1008F92C0 /* Constants.swift */; };
 		6CD8DF152912E35F00310E15 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD8DF142912E35F00310E15 /* ErrorResponse.swift */; };
@@ -45,6 +52,13 @@
 		6C2F8A1B28A288BE008E380B /* NetworkManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerProtocol.swift; sourceTree = "<group>"; };
 		6C49F19528A562F200A3F56F /* MovieType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieType.swift; sourceTree = "<group>"; };
 		6C63E9FB28AE6FF6005FA162 /* PopularViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularViewModel.swift; sourceTree = "<group>"; };
+		6C7D5F9E2955D923009947EB /* PopularViewCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularViewCode.swift; sourceTree = "<group>"; };
+		6C7D5FA02955D997009947EB /* PopularService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularService.swift; sourceTree = "<group>"; };
+		6C7D5FA22955F10B009947EB /* PopularViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularViewModelTests.swift; sourceTree = "<group>"; };
+		6C7D5FA52955F14B009947EB /* PopularServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularServiceMock.swift; sourceTree = "<group>"; };
+		6C7D5FA72955F4B6009947EB /* PopularMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularMock.swift; sourceTree = "<group>"; };
+		6C7D5FAA295626D8009947EB /* PopularServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularServiceTest.swift; sourceTree = "<group>"; };
+		6C7D5FAD2956273E009947EB /* NetworkManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerMock.swift; sourceTree = "<group>"; };
 		6CD64DDD28A522D7008F89F0 /* Popular.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Popular.swift; sourceTree = "<group>"; };
 		6CD7F35B291D4AF1008F92C0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		6CD8DF142912E35F00310E15 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
@@ -98,6 +112,7 @@
 			children = (
 				6C49F19428A562D400A3F56F /* Enums */,
 				6CD8DF142912E35F00310E15 /* ErrorResponse.swift */,
+				6C7D5FA02955D997009947EB /* PopularService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -124,6 +139,64 @@
 				6C63E9FB28AE6FF6005FA162 /* PopularViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		6C7D5F9D2955D906009947EB /* ViewCode */ = {
+			isa = PBXGroup;
+			children = (
+				6C7D5F9E2955D923009947EB /* PopularViewCode.swift */,
+			);
+			path = ViewCode;
+			sourceTree = "<group>";
+		};
+		6C7D5FA42955F124009947EB /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				6C7D5FB1295627B8009947EB /* Network */,
+				6C7D5FB0295627B2009947EB /* Service */,
+				6C7D5FAF295627A6009947EB /* Model */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		6C7D5FA9295626B3009947EB /* ViewModelTest */ = {
+			isa = PBXGroup;
+			children = (
+				6C7D5FA22955F10B009947EB /* PopularViewModelTests.swift */,
+			);
+			path = ViewModelTest;
+			sourceTree = "<group>";
+		};
+		6C7D5FAC295626DD009947EB /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				6C7D5FAA295626D8009947EB /* PopularServiceTest.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		6C7D5FAF295627A6009947EB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6C7D5FA72955F4B6009947EB /* PopularMock.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6C7D5FB0295627B2009947EB /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				6C7D5FA52955F14B009947EB /* PopularServiceMock.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		6C7D5FB1295627B8009947EB /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				6C7D5FAD2956273E009947EB /* NetworkManagerMock.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		6CD64DDC28A522CB008F89F0 /* Model */ = {
@@ -168,6 +241,7 @@
 				6CF07085289BF5C4008F0433 /* MoviesApp.swift */,
 				6CD64DDC28A522CB008F89F0 /* Model */,
 				6C7D5F9B2955D73F009947EB /* ViewModel */,
+				6C7D5F9D2955D906009947EB /* ViewCode */,
 				6C7D5F9A2955D71C009947EB /* View */,
 				6C63E9F828AE6D05005FA162 /* Service */,
 				6CF070AF289BF626008F0433 /* Network */,
@@ -188,6 +262,9 @@
 		6CF07095289BF5C9008F0433 /* MoviesTests */ = {
 			isa = PBXGroup;
 			children = (
+				6C7D5FAC295626DD009947EB /* Service */,
+				6C7D5FA9295626B3009947EB /* ViewModelTest */,
+				6C7D5FA42955F124009947EB /* Mocks */,
 				6CF07096289BF5C9008F0433 /* MoviesTests.swift */,
 			);
 			path = MoviesTests;
@@ -345,9 +422,11 @@
 				6CD7F35C291D4AF1008F92C0 /* Constants.swift in Sources */,
 				6CD64DDE28A522D7008F89F0 /* Popular.swift in Sources */,
 				6C63E9FC28AE6FF6005FA162 /* PopularViewModel.swift in Sources */,
+				6C7D5F9F2955D923009947EB /* PopularViewCode.swift in Sources */,
 				6C49F19628A562F200A3F56F /* MovieType.swift in Sources */,
 				6CD8DF152912E35F00310E15 /* ErrorResponse.swift in Sources */,
 				6CF07088289BF5C4008F0433 /* PopularView.swift in Sources */,
+				6C7D5FA12955D997009947EB /* PopularService.swift in Sources */,
 				6C2F8A1C28A288BE008E380B /* NetworkManagerProtocol.swift in Sources */,
 				6C20AA2128B7A69200E01219 /* NetworkRequest.swift in Sources */,
 				6CF07086289BF5C4008F0433 /* MoviesApp.swift in Sources */,
@@ -358,7 +437,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C7D5FA32955F10B009947EB /* PopularViewModelTests.swift in Sources */,
+				6C7D5FA82955F4B6009947EB /* PopularMock.swift in Sources */,
+				6C7D5FAE2956273E009947EB /* NetworkManagerMock.swift in Sources */,
 				6CF07097289BF5C9008F0433 /* MoviesTests.swift in Sources */,
+				6C7D5FAB295626D8009947EB /* PopularServiceTest.swift in Sources */,
+				6C7D5FA62955F14B009947EB /* PopularServiceMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

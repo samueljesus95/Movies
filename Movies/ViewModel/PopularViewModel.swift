@@ -11,18 +11,17 @@ class PopularViewModel: ObservableObject {
 
     @Published
     private(set) var popular: [Popular] = []
-    private let networkManager: NetworkManagerProtocol
+    let popularServiceProtocol: PopularServiceProtocol
 
-    init(networkManager: NetworkManagerProtocol = DefaultNetworkService()) {
-        self.networkManager = networkManager
+    init(popularServiceProtocol: PopularServiceProtocol = PopularService()) {
+        self.popularServiceProtocol = popularServiceProtocol
     }
 
     func fetch() {
-        let request = NetworkRequest(path: MovieType.popular.path, method: .get, headers: ["Content-Type" : "application/json"])
-        networkManager.request(request) { [weak self] (_ result: Result<PopularResult, ErrorResponse>) in
+        popularServiceProtocol.loadData { [weak self] result in
             switch result {
             case .success(let popularResult):
-                self?.popular = popularResult.results
+                self?.popular = popularResult
             case .failure(let error):
                 print(error)
             }
