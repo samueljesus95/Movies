@@ -18,8 +18,8 @@ struct PopularView: View {
                 .padding()
             Spacer()
             List {
-                ForEach(popularViewModel.popular, id: \.self) { movie in
-                    Text(movie.title ?? "")
+                ForEach(popularViewModel.popularItens, id: \.title) { cellItem in
+                    Text(cellItem.title)
                         .padding()
                 }
             }

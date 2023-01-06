@@ -11,7 +11,8 @@ import SwiftUI
 struct MoviesApp: App {
     var body: some Scene {
         WindowGroup {
-            PopularView()
+//            PopularView()
+            PopularListFlow()
         }
     }
 }

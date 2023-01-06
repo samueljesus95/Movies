@@ -13,7 +13,7 @@ class PopularServiceMock: PopularServiceProtocol {
     var isSucess = false
     var mockResult: [Popular] = PopularMock.popularWithOneMovie.results
 
-    func loadData(completion: @escaping (Result<[Movies.Popular], Movies.ErrorResponse>) -> Void) {
+    func loadData(completion: @escaping (Result<[Movies.Popular], Movies.NetworkManagerError>) -> Void) {
         didCallLoadData = true
         isSucess ? completion(.success(mockResult)) : completion(.failure(.apiError))
     }

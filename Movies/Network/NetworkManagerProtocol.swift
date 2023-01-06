@@ -7,56 +7,43 @@
 
 import Foundation
 
+//MARK: - network protocol
 protocol NetworkManagerProtocol: AnyObject {
-    func request<T: Codable>(_ request: NetworkRequest, completion: @escaping (Result<T, ErrorResponse>) -> Void)
+    func request<T: Codable>(_ request: NetworkRequest, completion: @escaping (Result<T, Error>) -> Void)
 }
 
+//MARK: - implementation of network protocol
 final class DefaultNetworkService: NetworkManagerProtocol {
-    func request<T>(_ request: NetworkRequest, completion: @escaping (Result<T, ErrorResponse>) -> Void) where T : Decodable, T : Encodable {
+    func request<T>(_ request: NetworkRequest, completion: @escaping (Result<T, Error>) -> Void) where T : Decodable, T : Encodable {
 
-        guard var urlComponent = URLComponents(string: baseUrl + request.path) else {
-            return completion(.failure(.invalidEndpoint))
-        }
+        do {
+            let urlRequest = try request.createURLRequest()
 
-        var queryParameters = [URLQueryItem(name: "api_key", value: apiKey)]
-        request.queryParameters?.forEach {
-            let urlQueryParameter = URLQueryItem(name: $0.key, value: $0.value)
-            urlComponent.queryItems?.append(urlQueryParameter)
-            queryParameters.append(urlQueryParameter)
-        }
+            URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+                DispatchQueue.main.async {
+                    if error != nil {
+                        return completion(.failure(NetworkManagerError.connectionFailedWithAPI))
+                    }
 
-        urlComponent.queryItems = queryParameters
+                    guard let response = response as? HTTPURLResponse, 200..<300 ~= response.statusCode else {
+                        return completion(.failure(NetworkManagerError.invalidResponse))
+                    }
 
-        guard let url = urlComponent.url else {
-            return completion(.failure(.invalidResponse))
-        }
+                    guard let data = data else {
+                        return completion(.failure(NetworkManagerError.noData))
+                    }
 
-        var urlRequest = URLRequest(url: url)
-        urlRequest.httpMethod = request.method.rawValue
-        urlRequest.allHTTPHeaderFields = request.headers
-
-        URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
-            DispatchQueue.main.async {
-                if error != nil {
-                    return completion(.failure(.apiError))
-                }
-
-                guard let response = response as? HTTPURLResponse, 200..<300 ~= response.statusCode else {
-                    return completion(.failure(.invalidResponse))
-                }
-
-                guard let data = data else {
-                    return completion(.failure(.noData))
-                }
-
-                do {
-                    let response = try JSONDecoder().decode(T.self, from: data)
-                    completion(.success(response))
-                } catch {
-                    completion(.failure(.serializationError))
+                    do {
+                        let response = try JSONDecoder().decode(T.self, from: data)
+                        completion(.success(response))
+                    } catch {
+                        completion(.failure(NetworkManagerError.serializationError))
+                    }
                 }
             }
+            .resume()
+        } catch {
+            completion(.failure(error))
         }
-        .resume()
     }
 }

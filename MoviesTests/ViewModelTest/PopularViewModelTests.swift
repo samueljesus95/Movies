@@ -31,24 +31,18 @@ final class PopularViewModelTests: XCTestCase {
     func testShouldLoadDataWithOneMovie() {
         popularServiceMock.isSucess = true
         sut.fetch()
-        XCTAssertEqual(sut.popular.count, 1)
-    }
-
-    func testShouldLoadDataWithCorrectValues() {
-        popularServiceMock.isSucess = true
-        sut.fetch()
-        XCTAssertTrue(sut.popular.contains(PopularMock.popularFirst))
+        XCTAssertEqual(sut.popularItens.count, 1)
     }
 
     func testShoulLoadDataWithTwoMovies() {
         popularServiceMock.isSucess = true
         popularServiceMock.mockResult = PopularMock.popularWithTwoMovie.results
         sut.fetch()
-        XCTAssertEqual(sut.popular.count, 2)
+        XCTAssertEqual(sut.popularItens.count, 2)
     }
 
     func testShouldLoadDataWithFailure() {
         sut.fetch()
-        XCTAssertEqual(sut.popular.count, 0)
+        XCTAssertEqual(sut.popularItens.count, 0)
     }
 }

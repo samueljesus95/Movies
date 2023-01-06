@@ -9,9 +9,17 @@ import Foundation
 @testable import Movies
 
 class NetworkManagerMock: NetworkManagerProtocol {
-    func request<T>(_ request: Movies.NetworkRequest, completion: @escaping (Result<T, Movies.ErrorResponse>) -> Void) where T : Decodable, T : Encodable {
-        <#code#>
-    }
+    typealias T = Codable
 
-    
+    var requestReceived: NetworkRequest?
+    var didCallRequest = false
+    var isSuccess = false
+    var mockResult: T?
+
+    func request<T>(_ request: Movies.NetworkRequest, completion: @escaping (Result<T, Movies.NetworkManagerError>) -> Void) where T : Decodable, T : Encodable {
+        didCallRequest = true
+        requestReceived = request
+
+        isSuccess ? completion(.success(mockResult as! T)) : completion(.failure(.noData))
+    }
 }
